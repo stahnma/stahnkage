@@ -1,0 +1,18 @@
+.cssbutton {
+	background: #fff;
+	padding: 1px;
+	font-family: Geneva, Vera, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	font-variant : small-caps;
+	border : 1px solid #aaa;
+}
+.buttonleft {
+	color: #f8f8f8;
+	background: #a42;
+	padding: 0px 3px 0px 3px;
+}
+.buttonright {
+	color: #f8f8f8;
+	background: #886;
+	padding: 0px 20px 0px 3px;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+   $Id$
+   $HeadURL$
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title> <TMPL_VAR name> </title>
+	<meta http-equiv="Content-Language" content="English" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<TMPL_IF feedtype>
+        <link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
+</TMPL_IF>
+
+
+</head>
+<body>
+	
+<div class="content">
+	<div id="top">
+				<div id="icons">
+					<a href="/" title="Home page"><img src="images/home.gif" alt="Home" /></a>
+			<!--		<a href="/contact/" title="Contact us"><img src="images/contact.gif" alt="Contact" /></a> -->
+					<a href="/layout" title="Sitemap"><img src="images/sitemap.gif" alt="Sitemap" /></a>
+				</div>
+
+				<h1>www.stahnkage.com</h1>
+                                <!-- I'd like some friggen random penguin quotes here -->
+				<h2>Penguins eat Polar Bears!</h2>
+	</div>
+	<!-- end of the Top part -->
+</div>			
+
+<div id="prec">
+	<div id="wrap">
+			<div id="pic">
+
+			<div id="slogan"> 
+                         <h1><TMPL_VAR name></h1>
+                         <h2>The most common comment I get about stahnkage is the lack of updates.  It's a lot of work to maintain a website as cool as this, and to optimize it to handle up to 3 concurrent users.  So, I have decided to switch to a new format.  Much of this has been going on behind the scenes for a while.  Here is the first attempt to put it out front.  I present the Stahnkage RSS feed collaberation mechanims.  This is powered by Python and PHP and lots of other good stuff.  <br>
+I am still working on a few things, if you see bugs, please <a href=http://www.stahnkage.com/trac/newticket>open a ticket</a>.
+<br /><br />
+I also realize that right now, only Rutherford's head shows on the Stahnkage blog. This will be fixed soon, I just need to workwith Ruthbuddy on how we do it.
+
+</h2>
+					
+				</div> 
+			</div>
+			<div id="menu">
+						<ul>	
+							<li><a href="http://www.stahnkage.com" title="home">/</a></li>
+							<li><a href="/blogs" title="Blogs">/blogs</a></li>
+							<li><a href="/downloads" title="Downloads">/downloads</a></li>
+							<li><a href="/fedora" title="Fedora">/fedora</a></li>
+							<li><a href="/trac" title="Infrastructure">/infrastructure</a></li>
+							<li><a href="/wiki" title="Wiki">/wiki</a></li>
+						
+						</ul>
+			</div>
+	</div>
+
+</div>
+
+
+<div class="content">
+
+<div id="main">
+		<div id="right_side">
+<h3>Subscriptions</h3>
+<TMPL_LOOP Channels>
+<a href="<TMPL_VAR url ESCAPE="HTML">" title="subscribe"><img src="images/feed-icon-10x10.png" alt="(feed)"></a> <a <TMPL_IF link>href="<TMPL_VAR link ESCAPE="HTML">" </TMPL_IF><TMPL_IF message>class="message" title="<TMPL_VAR message ESCAPE="HTML">"</TMPL_IF><TMPL_UNLESS message>title="<TMPL_VAR title_plain ESCAPE="HTML">"</TMPL_UNLESS>><TMPL_VAR name></a><br />
+ </TMPL_LOOP>
+
+
+
+			<h3>Old Static Links</h3>
+			<ul>	
+                        <div class=inbox>
+<li><a href="http://blogs.apress.com/">Mike's Apress Blog</a></li>
+<li><a href="http://www.amazon.com/gp/product/1590594762">Mike's Book on Amazon</a></li>
+<li><a href="http://www.amazon.com/gp/pdp/profile/A1UMSAS8QLFEKN">Mike's Amazon Wish List</a></li>
+<li><a href="http://www.flickr.com/photos/51035538357%40N01/">Mike on Flickr</a></li>
+<li><a href="http://www.digg.com/linux_unix/Linux_Tip_10">Mike had a story on Digg!</a></li>
+ <li><a href="http://myspace.com/stahnkage">Mike on MySpace</a></li>
+
+     <li><a href="http://myspace.com/davetopia">Dave on MySpace</a></li>
+<li><a href="http://www.moatman.com">moatman.com</a></li>
+<li><a href="http://www.rockband.com/band.asp?sbn=mike-tv">MikeTV Site</a> (Band Mike produced)</li>
+                     </ul>
+
+		</div>
+
+ <div id="left_side">
+
+<TMPL_LOOP Items>
+<TMPL_IF new_date>
+<TMPL_UNLESS __FIRST__>
+### End <div class="channelgroup">
+</div>
+### End <div class="daygroup">
+</div>
+</TMPL_UNLESS>
+<div class="daygroup">
+<h1><TMPL_VAR new_date></h1>
+</TMPL_IF>
+
+<TMPL_IF new_channel>
+<TMPL_UNLESS new_date>
+### End <div class="channelgroup">
+</div>
+</TMPL_UNLESS>
+<div class="channelgroup">
+
+
+<h3><a href="<TMPL_VAR channel_link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR channel_name></a></h3>
+<TMPL_IF channel_face>
+<img class="face" src="images/<TMPL_VAR channel_face ESCAPE="HTML">" width="<TMPL_VAR channel_facewidth ESCAPE="HTML">" height="<TMPL_VAR channel_faceheight ESCAPE="HTML">" alt="">
+</TMPL_IF>
+</TMPL_IF>
+
+
+<div class="entrygroup" id="<TMPL_VAR id>"<TMPL_IF channel_language> lang="<TMPL_VAR channel_language>"</TMPL_IF>>
+<TMPL_IF title>
+<h4<TMPL_IF title_language> lang="<TMPL_VAR title_language>"</TMPL_IF>><a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_VAR title></a></h4>
+</TMPL_IF>
+<div class="entry">
+<div class="content"<TMPL_IF content_language> lang="<TMPL_VAR content_language>"</TMPL_IF>>
+<TMPL_VAR content>
+</div>
+<br />
+
+
+<p class="date">
+<a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_IF author>by <TMPL_VAR author> at </TMPL_IF><TMPL_VAR date><TMPL_IF category> under <TMPL_VAR category></TMPL_IF></a>
+</p>
+</div>
+</div>
+
+<TMPL_IF __LAST__>
+### End <div class="channelgroup">
+</div>
+### End <div class="daygroup">
+</div>
+</TMPL_IF>
+<!-- can put clear all here -->
+</TMPL_LOOP>
+
+</div>
+
+
+
+
+<!-- footer -->
+ <div id="footer" align=center>
+<br />
+<p class="left">
+<strong>Last updated:</strong><br>
+<TMPL_VAR date><br>
+<em>All times are UTC.</em><br>
+<br />
+
+ <p class="right" >
+  Copyright &copy; 2007.  Stahnakge, Inc. <br /><small><font color=black>Stahnkage Goodness Release</font></small><br /><br />
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" />
+</a>
+<a href=http://www.free-css-templates.com>&nbsp;</a>
+<br /><small>
+
+ </p>
+</div>
+</body>
+<!-- Much of this layout credit goes to 
+    Design: "http://www.free-css-templates.com" : David Herreman
+    Used under proper CC terms.
+-->
+</html>
+
+

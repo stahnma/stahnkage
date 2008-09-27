@@ -1,0 +1,2 @@
+http://www.stahnkage.com/blogs/index.php?/feeds/index.atom
+http://www.stahnkage.com/wiki/index.php?title=Special:Recentchanges&feed=atom

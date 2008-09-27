@@ -1,0 +1,99 @@
+body {
+	text-align: center;
+	font-size: 62.5%;
+	font-family: verdana, arial, sans-serif;
+}
+div#contain {
+	margin: 0 auto;
+	width: 1000em;
+}
+
+dl {
+	float: left;
+}
+dt {
+	clear: left;
+	padding: 2em 0;
+	background: url(../images/vLine.gif) 50% repeat-y;
+	border-bottom: 1px solid #000;
+	margin: 0 1em 0 1em;
+}
+dd dt {
+	padding: 2em 0;
+}
+dd dd dt {
+	padding: 2em 0;
+}
+dt.root {
+	padding: 0 0 2em 0;
+	margin: 0;
+	clear: none;
+}
+dd {
+	float: left;
+	margin: -1px .3em 0 .3em;
+}
+
+dd dl dd {
+	background: url(../images/vLine.gif) 50% repeat-y;
+	padding-top: 2em;
+}
+
+dd.first dt, dd dl dd.first {
+	background: url(../images/vLinefirst.gif) 50% repeat-y;
+	margin-left: 0;
+}
+dd.last dt, dd dl dd.last {
+	background: url(../images/vLinelast.gif) 50% repeat-y;
+	margin-right: 0;
+}
+dd.first {
+	margin-left: 0;
+}
+dd.last {
+	margin-right: 0;
+}	
+dd dl dd.first dd dt {
+	background: url(../images/vLine.gif) 50% repeat-y;
+}
+* html dd dl dd.first dd dt {
+	border-left: none; /*IE wasn't diggin the left borders*/
+}
+/*try to blot out some of the bottom border on the edges*/
+dd.first dt {
+	border-left: .3em solid #fff;
+}
+dd.last dt {
+	border-right: .3em solid #fff;
+}
+dd.ddTree {
+	padding-top: 0;
+	float: none;
+}
+dd.ddTree dd.first {
+	margin-left: .3em;
+}
+dd.ddTree dd.last {
+	margin-right: .3em;
+}
+
+
+a {
+	display: block;
+	background: #ddd;
+	border: 1px solid #000;
+	padding: 5px;
+	text-decoration: none;
+	color: #222;
+}
+a:hover {
+	background: #F8DBA9;
+	color: #222;
+}
+dt a {
+	width: 10em;
+	margin: 0 auto;
+}
+* html dt a {
+	margin: 0;/*ie didn't like this auto centering business and centered it with text-align alone - odd*/
+}
