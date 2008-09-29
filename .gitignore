@@ -1,0 +1,4 @@
+scratch/*
+planet/output/*
+!planet/output/images
+*/cache/*
