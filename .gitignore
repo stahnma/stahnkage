@@ -3,3 +3,4 @@ planet/output/*
 !planet/output/images
 */cache/*
 */templates_c/*
+/redbox/smarty/templates_c/*
