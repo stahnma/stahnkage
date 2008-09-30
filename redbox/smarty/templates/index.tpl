@@ -197,7 +197,7 @@
 <br />
 <a href="http://www.dansimard.com/not_tested_in_ie/"><img border=0 src="/images/noie.png" /></a>
  <p class="right" >
-  Copyright &copy; 2007.  Stahnakge, Inc. <br /><small><font color=black>Stahnkage Goodness Release</font></small><br /><br />
+  Copyright &copy; 2008.  Stahnakge, Inc. <br /><small><font color=black>Stahnkage Goodness Release</font></small><br /><br />
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
 <img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" />
