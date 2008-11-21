@@ -8,7 +8,7 @@ task :default => :install
 task :install => :deploy 
 task :uninstall => :undeploy
 
-task :deploy do 
+task :create_directories do 
    dirs = []
    # Figure out what directories need to be made
    Find.find('.') do | dir|
@@ -20,6 +20,32 @@ task :deploy do
     end
     dirs.each do |dir|
       puts "mkdir -p " + DIRECTORY + "/#{dir}"
-      #Dir.mkdir dir
+      sh "mkdir -p " + DIRECTORY + "/#{dir}"
     end
+end
+
+
+task :deploy => :create_directories do
+   filelist = []
+   # Find files that are local, and install them  
+   Find.find('.') do | dir|
+     dir.each do |file|
+       next if file =~ /Rakefile*/
+       next if file =~ /^\.\.?$/
+       next if FileTest.directory?(file)
+       # Strip ./ 
+       filelist << file.sub!(/^\.\//, '') 
+       end
+    end
+    filelist.each do |file| 
+      location =  DIRECTORY + '/' + file
+      puts "install -p -m644 #{file} #{location}"
+      sh "install -p -m644 #{file} #{location}"
+    end
+end
+
+task :undeploy do 
+   dirs = []
+   puts "rm -rf #{DIRECTORY}"
+   sh "rm -rf #{DIRECTORY}"
 end
