@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+#
+#
+require 'find'
+
+DIRECTORY='/var/www/html/layout'
+task :default => :install
+task :install => :deploy 
+task :uninstall => :undeploy
+
+task :deploy do 
+   dirs = []
+   # Figure out what directories need to be made
+   Find.find('.') do | dir|
+     dir.each do |file|
+       next if file =~ /Rakefile*/
+       next if file =~ /^\.\.?$/
+       dirs << File.basename(file) if FileTest.directory?(file)
+       end
+    end
+    dirs.each do |dir|
+      puts "mkdir -p " + DIRECTORY + "/#{dir}"
+      #Dir.mkdir dir
+    end
+end
