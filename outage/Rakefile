@@ -13,11 +13,12 @@
 
 
 task :default => :create_directories
+task :install => :deploy 
+task :uninstall => :undeploy
+
 desc "Create outage directory if it doesn't exist"
 task(:create_directories) do
-  
   shared_folders = ["/var/www/html/outage", "/var/www/html/outage/images"]
-  
   for folder in shared_folders
     if File.exists?(folder)
       puts "#{folder} found."
