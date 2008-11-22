@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+import  '../Rakefile'
+
+
+task :default => :install  do 
+
+    cronfile= '/var/spool/cron/root'
+    foo = `grep cron_planet.sh #{cronfile}`
+    exit 0 if foo.size!=0 
+    puts 'This is foo' +  foo
+    puts "echo SHELL=/bin/bash >> #{cronfile}"
+    sh "echo SHELL=/bin/bash >> #{cronfile}"
+    puts "echo '*/10 * * * * /var/www/html/planet/cron_planet.sh  &> /dev/null'>> #{cronfile} "
+    sh "echo '*/10 * * * * /var/www/html/planet/cron_planet.sh  &> /dev/null' >> #{cronfile} "
+    puts "crontab #{cronfile}"
+    sh "crontab #{cronfile}"
+ 
+end
