@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
 import  '../Rakefile'
+
+
+task :default => :install do 
+   # Copy over base /images directory
+    
+end
