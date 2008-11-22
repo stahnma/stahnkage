@@ -1,54 +1,51 @@
 #!/usr/bin/env ruby
 #
-# Rakefile to deploy the stahnkage outage templates
 #
-#
-# 
-# mkdir /var/www/html/outage
-# deploy an alias file in conf.d to make this the doc root?
-# move content over to the outage directory
-# eventually, have the outage page generated from a rakefile, so it has look and feel of the rest of stahnkage
-#
-#
+require 'find'
 
-
-task :default => :create_directories
+DIRECTORY='/var/www/html/redbox'
+task :default => :install
 task :install => :deploy 
 task :uninstall => :undeploy
 
-desc "Create outage directory if it doesn't exist"
-task(:create_directories) do
-  shared_folders = ["/var/www/html/outage", "/var/www/html/outage/images"]
-  for folder in shared_folders
-    if File.exists?(folder)
-      puts "#{folder} found."
-    else
-      puts "mkdir #{folder} "
-      Dir.mkdir "#{folder}"
+task :create_directories do 
+   dirs = []
+   # Figure out what directories need to be made
+   Find.find('.') do | dir|
+     dir.each do |file|
+       next if file =~ /Rakefile*/
+       next if file =~ /^\.\.?$/
+       dirs << file.sub!(/^\.\//, '')  if FileTest.directory?(file)
+       end
     end
-    
-  end
+    dirs.each do |dir|
+      puts "mkdir -p " + DIRECTORY + "/#{dir}"
+      sh "mkdir -p " + DIRECTORY + "/#{dir}"
+    end
 end
+
 
 task :deploy => :create_directories do
-  files = ['index.html', 'style.css'  ] 
-  directories = ['images']
-  files.each do |file|
-    puts  "install -p -m644   #{file} /var/www/html/outage" 
-    sh "install -p -m644   #{file} /var/www/html/outage" 
-  end
-  directories.each do |dir|
-    puts "install -p -m644 #{dir}/* /var/www/html/outage/#{dir}"
-    sh "install -p -m644 #{dir}/* /var/www/html/outage/#{dir}"
-  end
+   filelist = []
+   # Find files that are local, and install them  
+   Find.find('.') do | dir|
+     dir.each do |file|
+       next if file =~ /Rakefile*/
+       next if file =~ /^\.\.?$/
+       next if FileTest.directory?(file)
+       # Strip ./ 
+       filelist << file.sub!(/^\.\//, '') 
+       end
+    end
+    filelist.each do |file| 
+      location =  DIRECTORY + '/' + file
+      puts "install -p -m644 #{file} #{location}"
+      sh "install -p -m644 #{file} #{location}"
+    end
 end
 
-
-task :undeploy do
-  puts "rm -rf /var/www/html/outage"
-  sh "rm -rf /var/www/html/outage"
-end
-
-task(:pull) do 
-  sh "git pull" 
+task :undeploy do 
+   dirs = []
+   puts "rm -rf #{DIRECTORY}"
+   sh "rm -rf #{DIRECTORY}"
 end

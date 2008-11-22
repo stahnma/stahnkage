@@ -1,4 +1,34 @@
 #!/usr/bin/env ruby
+#
+require 'getoptlong'
+
+
+  opts = GetoptLong.new(
+      [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
+      [ '--repeat', '-n', GetoptLong::REQUIRED_ARGUMENT ],
+      [ '--name', GetoptLong::OPTIONAL_ARGUMENT ]
+    )
+
+
+   # == Synopsis
+    #
+    # hello: greets user, demonstrates command line parsing
+    #
+    # == Usage
+    #
+    # hello [OPTION] ... DIR
+    #
+    # -h, --help:
+    #    show help
+    #
+    # --repeat x, -n x:
+    #    repeat x times
+    #
+    # --name [name]:
+    #    greet user by name, if name not supplied default is John
+    #
+    # DIR: The directory in which to issue the greeting.
+
 
 # Constants
 OLDGPGHOME=ENV['GNUPGHOME']

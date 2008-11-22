@@ -3,7 +3,7 @@
 #
 require 'find'
 
-DIRECTORY='/var/www/html/layout'
+DIRECTORY='/var/www/html/redbox'
 task :default => :install
 task :install => :deploy 
 task :uninstall => :undeploy
@@ -15,7 +15,7 @@ task :create_directories do
      dir.each do |file|
        next if file =~ /Rakefile*/
        next if file =~ /^\.\.?$/
-       dirs << File.basename(file) if FileTest.directory?(file)
+       dirs << file.sub!(/^\.\//, '')  if FileTest.directory?(file)
        end
     end
     dirs.each do |dir|
