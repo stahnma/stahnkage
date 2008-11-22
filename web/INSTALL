@@ -1,0 +1,7 @@
+Requirements:
+ planet
+ php-cli
+ php-Smarty
+ magpierss
+ rubygem-rake
+ php-pear-XML-RSS

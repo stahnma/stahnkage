@@ -1,3 +1,12 @@
 #!/usr/bin/env ruby
 
 import  '../Rakefile'
+
+
+task :default => :install do 
+  puts DIRECTORY
+  puts "mkdir -p #{DIRECTORY}/smarty/templates_c"
+  sh "mkdir -p -m755 #{DIRECTORY}/smarty/templates_c"
+  sh "chown apache:apache #{DIRECTORY}/smarty/templates_c"
+   
+end
