@@ -1,0 +1,18 @@
+dt.root a {
+	background: #DFC79F;/*orange*/
+}
+dd a {
+	background: #9FD2DF;/*blue*/
+}
+dd dd a {
+	background: #D0DF9F;/*green*/
+}
+dd dd dd a {
+	background: #DFAC9F;/*red*/
+}
+dd dd dd dd a {
+	background: #DB9FDF; /*purple*/
+}
+dd dd dd dd dd a {
+	background: #EFECA5; /*yellow*/
+}
