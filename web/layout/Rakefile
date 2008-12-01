@@ -2,3 +2,5 @@
 
 import  '../Rakefile'
 
+task :install => :default  do
+end

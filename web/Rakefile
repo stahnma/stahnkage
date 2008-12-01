@@ -52,69 +52,75 @@ task :deploy => :create_directories do
     end
 end
 
-
 desc "Deploy local script content to the master script directory #{SCRIPT_DIRECTORY}"
 task :script do
-   puts "mkdir -p #{SCRIPT_DIRECTORY}"
-   sh "mkdir -p #{SCRIPT_DIRECTORY}"
-   filelist = []
-   # Find files that are local, and install them  
-   Find.find('script') do | dir|
-     dir.each do |file|
-       next if file =~ /Rakefile*/
-       next if file =~ /^\.\.?$/
-       next if FileTest.directory?(file)
-       filelist << file
-       end
+  path = 'script'
+  filelist = []
+  if File.exists?(path) && File.directory?(path)
+    Find.find(path) do | dir|
+      dir.each do |file|
+        next if file =~ /Rakefile*/
+        next if file =~ /^\.\.?$/
+        next if FileTest.directory?(file)
+        filelist << file
+      end
     end
+    puts "mkdir -p #{SCRIPT_DIRECTORY}"
+    sh "mkdir -p #{SCRIPT_DIRECTORY}"
     filelist.each do |file| 
       location =  SCRIPT_DIRECTORY
       puts "install -p -m644 #{file} #{location}"
       sh "install -p -m644 #{file} #{location}"
     end
+  end
 end
+
 
 desc "Deploy local css content to the master css directory #{CSS_DIRECTORY}"
 task :css do
-   puts "mkdir -p #{CSS_DIRECTORY}"
-   sh "mkdir -p #{CSS_DIRECTORY}"
-   filelist = []
-   # Find files that are local, and install them  
-   Find.find('css') do | dir|
-     dir.each do |file|
-       next if file =~ /Rakefile*/
-       next if file =~ /^\.\.?$/
-       next if FileTest.directory?(file)
-       filelist << file
-       end
+  path = 'css'
+  filelist = []
+  if File.exists?(path) && File.directory?(path)
+    Find.find(path) do | dir|
+      dir.each do |file|
+        next if file =~ /Rakefile*/
+        next if file =~ /^\.\.?$/
+        next if FileTest.directory?(file)
+        filelist << file
+      end
     end
+    puts "mkdir -p #{CSS_DIRECTORY}"
+    sh "mkdir -p #{CSS_DIRECTORY}"
     filelist.each do |file| 
       location =  CSS_DIRECTORY
       puts "install -p -m644 #{file} #{location}"
       sh "install -p -m644 #{file} #{location}"
     end
+  end
 end
 
 desc "Deploy local image content to the master images directory #{IMAGE_DIRECTORY}"
-task :images do puts "mkdir -p #{IMAGE_DIRECTORY}"
-   sh "mkdir -p #{IMAGE_DIRECTORY}"
-   filelist = []
-   # Find files that are local, and install them  
-   Find.find('images') do | dir|
-     dir.each do |file|
-       next if file =~ /Rakefile*/
-       next if file =~ /^\.\.?$/
-       next if FileTest.directory?(file)
-       filelist << file
-       end
+task :images do
+  path = 'images'
+  filelist = []
+  if File.exists?(path) && File.directory?(path)
+    Find.find(path) do | dir|
+      dir.each do |file|
+        next if file =~ /Rakefile*/
+        next if file =~ /^\.\.?$/
+        next if FileTest.directory?(file)
+        filelist << file
+      end
     end
+    puts "mkdir -p #{IMAGE_DIRECTORY}"
+    sh "mkdir -p #{IMAGE_DIRECTORY}"
     filelist.each do |file| 
       location =  IMAGE_DIRECTORY
       puts "install -p -m644 #{file} #{location}"
       sh "install -p -m644 #{file} #{location}"
     end
+  end
 end
-
 
 desc "Remove everything under #{DIRECTORY}"
 task :cleanall do 
