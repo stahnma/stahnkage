@@ -9,7 +9,7 @@ body {
 	margin: 0; 
 	font: .74em Arial, sans-serif; 
 	line-height: 1.5em; 
-	background: #fff url(images/top.jpg) repeat-x top; 
+	background: #fff url(/images/top.jpg) repeat-x top; 
 	color: #454545; 
 	}
 	
@@ -36,20 +36,20 @@ hr { height: 1px; border-style: none; color: #d0d0d0; background-color: #C0C0C0;
 /* Second part */
 #prec { 	height: 220px; 	margin:0; padding: 0; background: #F6F6F6; border-bottom: 1px solid #DCDCDC; overflow: hidden; margin-bottom: 15px }
 	#wrap { margin: 0 auto; width: 800px; }
-		#wrap #pic { float: right; background: #FF0000 url(images/mainimg.jpg) no-repeat; height: 199px; width: 589px; overflow: hidden}
+		#wrap #pic { float: right; background: #FF0000 url(/images/mainimg.jpg) no-repeat; height: 199px; width: 589px; overflow: hidden}
 			#wrap #pic #slogan { float: right; padding: 25px 30px 10px 30px; text-align: right }
 			#wrap #pic #slogan h1 { font: bold 1.4em Arial, Sans-Serif; color: #FFF; letter-spacing: 1px; margin:0 }
 			#wrap #pic #slogan h2 { font:  1.0em Arial, Sans-Serif; color: #FFF; letter-spacing: 0px; margin:0; padding: 10px 0}
 			#wrap #pic #slogan a { color: #FFF; }
 			
 		#wrap #menu { padding: 0; margin:0; background: inherit; }
-		#wrap #menu a { padding-left: 25px; font:  0.9em Arial, Sans-Serif; text-decoration: none; background: #F6F6F6 url(images/lm-li.gif) no-repeat left;  }
+		#wrap #menu a { padding-left: 25px; font:  0.9em Arial, Sans-Serif; text-decoration: none; background: #F6F6F6 url(/images/lm-li.gif) no-repeat left;  }
 		#wrap #menu ul { padding: 10px 0 }
-		#wrap #menu li { line-height: 26px; background: #F6F6F6 url(images/li-line.gif) no-repeat bottom left; list-style: none }
+		#wrap #menu li { line-height: 26px; background: #F6F6F6 url(/images/li-line.gif) no-repeat bottom left; list-style: none }
 		
 
 /*  Advertising */
-#ad { background: #FFF url(images/download.jpg) no-repeat left; padding-left: 95px; min-height: 80px; margin-bottom: 15px;}
+#ad { background: #FFF url(/images/download.jpg) no-repeat left; padding-left: 95px; min-height: 80px; margin-bottom: 15px;}
 #ad a, #left_side a { background: #FFF; text-decoration: none }
 #ad a:hover, #left_side a:hover { text-decoration: underline }
 		
@@ -57,13 +57,13 @@ hr { height: 1px; border-style: none; color: #d0d0d0; background-color: #C0C0C0;
 #main { }
 	#right_side { float: right; width: 212px; background: #F6F6F6; padding: 5px 10px 5px 10px; margin-bottom: 10px }
 		#right_side ul { padding: 3px 0 8px 0 } 
-		#right_side li { line-height: 18px; background: #F6F6F6 url(images/cat-li.gif) no-repeat left; list-style: none; padding-left: 20px; }
+		#right_side li { line-height: 18px; background: #F6F6F6 url(/images/cat-li.gif) no-repeat left; list-style: none; padding-left: 20px; }
 		#right_side a { background: #F6F6F6; text-decoration:  none }
 		#right_side h3 { color: #404040; font:  bold 1.2em Arial, Sans-Serif; }
 	
 	#left_side { background: #FFF; margin-bottom: 10px; width: 560px;  }
-		#left_side h3 { background: #FFF url(images/hbg.gif) repeat-x; height:30px; padding: 5px 0 0 0px; margin: 0; font:  bold 1.2em Arial, Sans-Serif; }
-		#left_side h3 span { background: url(images/h-art.gif) no-repeat left; padding: 1px 10px 0 23px;  line-height: 22px; margin: 0}
+		#left_side h3 { background: #FFF url(/images/hbg.gif) repeat-x; height:30px; padding: 5px 0 0 0px; margin: 0; font:  bold 1.2em Arial, Sans-Serif; }
+		#left_side h3 span { background: url(/images/h-art.gif) no-repeat left; padding: 1px 10px 0 23px;  line-height: 22px; margin: 0}
 		#left_side p { color: #454545; padding: 0 5px 0 5px; text-align: justify }
 		#left_side img { float: left; padding: 0 10px 5px 0 }
 		#left_side blockquote { padding-left: 10px; border-left: 2px solid #DA4040; margin: 10px 0 10px 25px; }
