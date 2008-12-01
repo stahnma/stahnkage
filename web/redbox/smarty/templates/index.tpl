@@ -46,7 +46,7 @@
                       <!-- if possible make this menu an include file -->
 			<div id="menu">
 						<ul>	
-							<li><a href="http://www.stahnkage.com" title="home">/</a></li>
+							<li><a href="/" title="home">/</a></li>
 							<li><a href="/blogs" title="Blogs">/blogs</a></li>
 							<li><a href="/downloads" title="Blogs">/downloads</a></li>
 							<li><a href="http://stahnma.fedorapeople.org" title="Fedora">/fedora</a></li>
