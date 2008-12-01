@@ -2,8 +2,9 @@
 
 import  '../Rakefile'
 
-
-task :default => :install do 
+task :default => :install
+task :install => :local_install 
+task :local_install => :parent_install  do 
   puts DIRECTORY
   puts "mkdir -p #{DIRECTORY}/smarty/templates_c"
   sh "mkdir -p -m755 #{DIRECTORY}/smarty/templates_c"

@@ -6,14 +6,18 @@ require 'find'
 HTTP_DIRECTORY='/var/www/html/'
 PROJECT = `pwd`.split('/')[-1].strip
 DIRECTORY= HTTP_DIRECTORY + PROJECT
+CSS_DIRECTORY=HTTP_DIRECTORY + 'css'
+IMAGE_DIRECTORY=HTTP_DIRECTORY + 'images'
 
-task :default => :install
-task :install => :deploy 
+task :default => [ :css, :images , :parent_install ]
+task :parent_install => :deploy 
 task :uninstall => :undeploy
 
 task :create_directories do 
    dirs = []
    # Figure out what directories need to be made
+   puts "mkdir -p #{DIRECTORY}/images"
+   puts "mkdir -p #{DIRECTORY}/css"
    Find.find('.') do | dir|
      dir.each do |file|
        next if file =~ /Rakefile*/
@@ -47,6 +51,56 @@ task :deploy => :create_directories do
     end
 end
 
+
+task :css do
+   puts "mkdir -p #{CSS_DIRECTORY}"
+   sh "mkdir -p #{CSS_DIRECTORY}"
+   filelist = []
+   # Find files that are local, and install them  
+   Find.find('../css') do | dir|
+     dir.each do |file|
+       next if file =~ /Rakefile*/
+       next if file =~ /^\.\.?$/
+       next if FileTest.directory?(file)
+       filelist << file
+       end
+    end
+    filelist.each do |file| 
+      location =  DIRECTORY + '/' + file
+      puts "install -p -m644 #{file} #{location}"
+      sh "install -p -m644 #{file} #{location}"
+    end
+end
+
+task :images do
+   puts "mkdir -p #{IMAGE_DIRECTORY}"
+   sh "mkdir -p #{IMAGE_DIRECTORY}"
+   filelist = []
+   # Find files that are local, and install them  
+   Find.find('../images') do | dir|
+     dir.each do |file|
+       next if file =~ /Rakefile*/
+       next if file =~ /^\.\.?$/
+       next if FileTest.directory?(file)
+       filelist << file
+       end
+    end
+    filelist.each do |file| 
+      location =  DIRECTORY + '/' + file
+      puts "install -p -m644 #{file} #{location}"
+      sh "install -p -m644 #{file} #{location}"
+    end
+end
+
+
+desc "Remove everything under #{DIRECTORY}"
+task :cleanall do 
+  puts "rm -rf #{DIRECTORY}"
+  sh "rm -rf #{DIRECTORY}"
+end
+
+
+
 task :undeploy do 
    dirs = []
    puts "rm -rf #{DIRECTORY}"
@@ -56,8 +110,9 @@ end
 task :help do
   puts 
   puts "usage #{$0} and a target"
-  puts "install 		--> install items into /var/www/html" 
-  puts "uninstall 		--> remove items from /var/www/html" 
-  puts "create_directories 	--> create directories in  /var/www/html" 
+  puts "install 		--> install items into #{DIRECTORY}" 
+  puts "uninstall 		--> remove items from #{DIRECTORY}" 
+  puts "create_directories 	--> create directories in  #{DIRECTORY}" 
+  puts "cleanall	  	--> rm -rf   #{HTTP_DIRECTORY}" 
   puts "help		 	--> display this message" 
 end
