@@ -1,0 +1,8 @@
+#!/bin/bash
+echo Content-type: text/html
+echo
+echo
+echo \<html\>\<head\>\<title\>StahnkageMaps!\</title\>\</head\>
+echo \<body\>\<h1\>StahnkageMaps!\</h1\>
+cat region.txt
+echo \</body\>\</html\>

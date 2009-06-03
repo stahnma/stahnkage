@@ -1,0 +1,42 @@
+Stahnkage Maps is the first in an attempt to bundle up the legacy stahnkage
+applications as made famous by Michael Stahnke and David Wilcoxson.
+
+These were primarily developed and coded drunk, at Mike's house in Pekin,
+IL from 2004-2006.
+
+
+About 
+------
+
+Stahnkage Maps is a lame bash CGI based service that pretty much cats a file
+to stdout.  It has ascii maps and invalid hyperlinks.
+
+Requirements 
+------------ 
+*  Apache
+
+Install 
+------- 
+Run
+  make install
+Then restart apache Point your browser to http://localhost/legacy/maps
+
+Known Issues 
+------------ 
+* SELinux support not tested 
+* Hyperlinks don't work 
+* Map not to scale 
+* Map not accurate, as Mike no longer lives in Pekin 
+* Curtis' whereabouts not confirmed
+
+
+
+
+
+
+
+
+----------------------------- 
+Licensed under BSD license.
+
+Copyright 2009; Michael Stahnke
